@@ -21,7 +21,7 @@ export class ExaminationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('test');
+    console.log('teeeest');
   }
 
   setType(){
