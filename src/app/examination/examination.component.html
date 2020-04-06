@@ -1,0 +1,22 @@
+<p>Examination: de keuring zelf</p>
+<div class="form-group">
+    <label>Kies type keuring:</label>
+    <!-- type van item die gekeurd moet worden, reddingsvest, reddingspak, ...-->
+    <input type="text" class="form-control" [(ngModel)]="type" (keyup.enter)="setType">
+</div>
+
+<div class="form-group">
+    <label>Geef klant in:</label>
+    <!-- indien van toepassing, bepaalde settings die eigen zijn aan een klant toepassen -->
+    <input type="text" class="form-control" [(ngModel)]="customer.id" (keyup.enter)="setCustomer">
+    <br/>
+    <textarea *ngIf="!customer.note">{{customer.note}}</textarea>
+</div>
+
+<div class="form-group">
+    <label>Geef code reddingsvest in</label>
+    <!-- kijken of de code in database terug te vinden is -->
+    <input type="text" class="form-control" [(ngModel)]="item.code" (keyup.enter)="setItemCode">
+</div>
+
+
