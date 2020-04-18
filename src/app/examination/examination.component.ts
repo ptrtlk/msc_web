@@ -12,16 +12,23 @@ export class ExaminationComponent implements OnInit {
 	  note:string
   };
   item:{
-	  code:null,
-	  brand:null,
-	  co2flask:null,
-	  approved:false
+	  code:number,
+	  brand:string,
+	  co2flask:number,
+	  approved:boolean
 	};
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log('teeeest');
+    console.log("init ngoninit")
+    this.type = "";
+    this.customer.id = "";
+    this.customer.note = "";
+    this.item.code = 0;
+    this.item.brand = "";
+    this.item.co2flask = 0;
+    this.item.approved = false;
   }
 
   setType(){
@@ -34,6 +41,10 @@ export class ExaminationComponent implements OnInit {
 
   setCustomer(){
 
+  }
+
+  clickFunction(){
+    this.type = "abcdeftype"
   }
 
 }
