@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-examination',
@@ -6,45 +7,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./examination.component.css']
 })
 export class ExaminationComponent implements OnInit {
-  type:string;
-  customer:{
-	  id:string,
-	  note:string
-  };
-  item:{
-	  code:number,
-	  brand:string,
-	  co2flask:number,
-	  approved:boolean
-	};
+  public customerForm: FormGroup;
+  public itemForm: FormGroup;
 
-  constructor() { }
+  constructor() {
+  }
+
+  type = ''
 
   ngOnInit(): void {
-    console.log("init ngoninit")
-    this.type = "";
-    this.customer.id = "";
-    this.customer.note = "";
-    this.item.code = 0;
-    this.item.brand = "";
-    this.item.co2flask = 0;
-    this.item.approved = false;
-  }
 
-  setType(){
-    console.log("type is set")
-  }
+    this.type = '';
 
-  setItemCode(){
+    this.customerForm = new FormGroup({
+      id: new FormControl(''),
+      note: new FormControl(''),
+    });
 
-  } 
+    this.itemForm = new FormGroup({
+      code: new FormControl(0),
+      brand: new FormControl(''),
+      co2flask: new FormControl(0),
+      approved: new FormControl(false)
+    });
 
-  setCustomer(){
-
+    this.itemForm.get('code').valueChanges.subscribe(((newValue: string) => {
+      console.log('set item code');
+    }));
   }
 
   clickFunction(){
-    this.type = "abcdeftype"
+    console.log('click')
   }
+
+  setType(){
+    console.log('settype')
+  }
+
 
 }
