@@ -44,7 +44,7 @@ export class ExaminationComponent implements OnInit {
 
   setType(){
     console.log('settype')
-    this._dataService.getCustomer();
+    //this._dataService.getCustomer();
   }
 
 

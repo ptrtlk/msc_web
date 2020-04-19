@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-customer',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  catName:""
+
+  constructor(private _dataService:DataService) { }
 
   ngOnInit(): void {
   }
+
+  getCat(){
+    var response = this._dataService.getCat(this.catName)
+    console.log('response:',response)
+  }
+
 
 }

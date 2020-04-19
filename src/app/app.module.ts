@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { CustomerComponent } from './customer/customer.component';
 import { ExaminationComponent } from './examination/examination.component';
 import { CertificatesComponent } from './certificates/certificates.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes=[
   {
@@ -46,7 +47,8 @@ const appRoutes=[
     RouterModule.forRoot(appRoutes),
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]
