@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-examination',
@@ -10,7 +11,7 @@ export class ExaminationComponent implements OnInit {
   public customerForm: FormGroup;
   public itemForm: FormGroup;
 
-  constructor() {
+  constructor(private _dataService:DataService) {
   }
 
   type = ''
@@ -38,10 +39,12 @@ export class ExaminationComponent implements OnInit {
 
   clickFunction(){
     console.log('click')
+    this._dataService.setCredentials("abc","def");
   }
 
   setType(){
     console.log('settype')
+    this._dataService.getCustomer();
   }
 
 
