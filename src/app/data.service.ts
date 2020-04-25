@@ -1,8 +1,62 @@
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-//import { Observable, Observable } from 'rxjs';
+import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  urlPrefix = 'http://localhost:3000';
+  apiNodes = {
+    addCustomer : '/addCustomer/:name/:location',
+    getCustomer : '/getCustomers/:id',
+    getCustomers : '/getCustomers',
+    updateCustomer : '/updateCustomer/:id/:newName',
+    deleteCustomer : '/deleteCustomer/:id'
+  }
+
+  constructor(private httpClient:HttpClient, private http:Http) {
+    
+  }
+
+  addCustomer(name:string, location:string){
+    let url = this.urlPrefix + this.apiNodes.addCustomer.replace(':name',name).replace(':location',location);
+    let obj = {
+        name:name,
+        location:location
+      };
+    this.http.post(url, obj).pipe(
+      map((res) => res.json())
+    );
+  }
+
+  getCustomers(){
+    let url = this.urlPrefix + this.apiNodes.getCustomers;
+    let returnvalue = this.httpClient.get(url);
+    return returnvalue;
+  }
+
+  getCustomer(id:string){
+    let url = this.urlPrefix + this.apiNodes.getCustomer.replace(':id', id);
+    return this.http.get(url).pipe(
+      map((res) => res.json())
+    );
+  }
+
+  /*
+  getWeather(city, code){
+    let url = this.url + city + ',' + code + '&APPID=' + this.apiKey;
+    return this.http.get(url).pipe(
+      map((res) => res.json())
+    );
+  }
+  */
+}
+
+/*
 export interface Customer {
   name:string
 }
@@ -35,4 +89,6 @@ export class DataService {
     console.log('getting cat: ', name);
     return this.http.get<Cat>(this.prefix + '/cat' + name)
   }
+
 }
+*/

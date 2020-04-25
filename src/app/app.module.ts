@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SettingComponent } from './setting/setting.component';
 import { WeatherService } from './weather.service';
+import { DataService } from './data.service';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { CustomerComponent } from './customer/customer.component';
@@ -50,7 +51,7 @@ const appRoutes=[
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [WeatherService],
+  providers: [WeatherService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

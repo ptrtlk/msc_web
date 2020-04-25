@@ -8,17 +8,21 @@ import { DataService } from '../data.service';
 })
 export class CustomerComponent implements OnInit {
 
-  catName:""
+  customerId:string;
 
   constructor(private _dataService:DataService) { }
 
   ngOnInit(): void {
   }
 
-  getCat(){
-    var response = this._dataService.getCat(this.catName)
-    console.log('response:',response)
+  getCustomers(){
+    var res = this._dataService.getCustomers();
+    console.log(JSON.stringify(res));
   }
 
+  getCustomer(){
+    var res = this._dataService.getCustomer(this.customerId);
+    console.log(JSON.stringify(res));
+  }
 
 }

@@ -39,7 +39,7 @@ export class ExaminationComponent implements OnInit {
 
   clickFunction(){
     console.log('click')
-    this._dataService.setCredentials("abc","def");
+    //this._dataService.setCredentials("abc","def");
   }
 
   setType(){
