@@ -35,8 +35,13 @@ export class DataService {
 
   getCustomers(){
     let url = this.urlPrefix + this.apiNodes.getCustomers;
-    let returnvalue = this.httpClient.get(url);
-    return returnvalue;
+  /*  let returnvalue = this.httpClient.get(url);
+    return returnvalue;*/
+    return this.http.get(url).pipe(
+      map(
+        (res) => res.json()
+      )
+    );
   }
 
   getCustomer(id:string){

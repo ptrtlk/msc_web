@@ -17,15 +17,26 @@ export class CustomerComponent implements OnInit {
   }
 
   getCustomers(){
-    var res = this._dataService.getCustomers();
-    console.log(JSON.stringify(res));
+    var res = this._dataService.getCustomers().subscribe(
+      (customers) => console.log(customers)
+      );
+    //console.log(JSON.stringify(res));
   }
 
   getCustomer(){
     /*var res = this._dataService.getCustomer(this.customerId);
     console.log(JSON.stringify(res));*/
-    var res = this._weatherService.getWeather('London','UK');
-    console.log(res);
+    this._weatherService.getWeather('London','UK').subscribe(
+      (response) => console.log(response)
+      );
   }
 
+  /*
+this._weatherService.getWeather(this.location.city, this.location.code).subscribe(
+      (response)=>{
+        console.log(response);
+        this.weather = response;
+      }
+    )
+  */
 }
