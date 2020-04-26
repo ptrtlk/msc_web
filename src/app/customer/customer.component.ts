@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { WeatherService } from '../weather.service';
 
 @Component({
   selector: 'app-customer',
@@ -10,7 +11,7 @@ export class CustomerComponent implements OnInit {
 
   customerId:string;
 
-  constructor(private _dataService:DataService) { }
+  constructor(private _dataService:DataService, private _weatherService:WeatherService) { }
 
   ngOnInit(): void {
   }
@@ -21,8 +22,10 @@ export class CustomerComponent implements OnInit {
   }
 
   getCustomer(){
-    var res = this._dataService.getCustomer(this.customerId);
-    console.log(JSON.stringify(res));
+    /*var res = this._dataService.getCustomer(this.customerId);
+    console.log(JSON.stringify(res));*/
+    var res = this._weatherService.getWeather('London','UK');
+    console.log(res);
   }
 
 }

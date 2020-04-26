@@ -41,6 +41,7 @@ export class DataService {
 
   getCustomer(id:string){
     let url = this.urlPrefix + this.apiNodes.getCustomer.replace(':id', id);
+    url = 'http://api.openweathermap.org/data/2.5/weather?q=Portland&appid=405cdff1e576bb2fad1a2bc5b525edca';
     return this.http.get(url).pipe(
       map((res) => res.json())
     );
